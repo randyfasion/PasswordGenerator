@@ -1,11 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var char = "abcdefghijklmnopqrstuvwxyz";
-var specchar = "!@#$%^&*()_+{}|:>?<-=[]\;',./`";
-var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var specchar = "!@#$%^&*()_+{}|:>?<-=[/;]',./`";
+var uppercharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numb = "0123456789"; 
-var result = " ";
-var password = " ";
+var result = "";
+var password = "";
+characters=uppercharacters +numb;
 
 
 // Write password to the #password input
@@ -15,40 +16,35 @@ function writePassword() {
     return;
   }
 
-  window.confirm("Click OK to confirm using special characters");
+ var special= window.confirm("Click OK to confirm using special characters");
 
+  var upper = window.confirm("Click OK to confirm using Upper Case");
+
+if(special){
+  characters = characters + specchar;
+}
+
+  console.log("hello", special, upper);
+  var password = generatePassword(passlen);
   
-  var password = generatePassword();
-  function generatePassword(){
-
-    var passwordText = document.querySelector("#password");
-
-    passwordText.value = password;
-   
-  }
   
+}
+function generatePassword(length){
 
+  var newpassword = "";
+for( var i=0; i< length; i++){
+  // console.log("loop", i);
+  newpassword = newpassword +  characters.charAt(Math.floor(Math.random() * characters.length));
+// console.log("hi", newpassword);
 }
 
 
-function makeid(length) {
+  var passwordText = document.querySelector("#password");
 
-  
-    for ( var i = 0; i < char.length; i++ ) 
-    {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    for ( var i = 0; i< specchar.length; i++){
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    for ( var i = 0; i< characters.length; i++){
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
+  passwordText.value = newpassword;
+characters = "";
 
-    return result;
- }
- 
- //console.log(makeid(5));
+}
 
 
 // Add event listener to generate button
