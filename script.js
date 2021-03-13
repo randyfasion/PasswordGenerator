@@ -1,6 +1,6 @@
 // Assignment Code
 
-
+//declare global variables 
 var generateBtn = document.querySelector("#generate");
 var char = "abcdefghijklmnopqrstuvwxyz";
 var specchar = "!@#$%^&*()_+{}|:>?<-=[/;]',./`";
@@ -14,14 +14,17 @@ upper = uppercharacters + numb;
 
 // Write password to the #password input
 function writePassword() {
+  //create a promt to ask how many characters
   var passlen = parseInt(prompt("how many characters would you like your password to contain"));
   if (!passlen) {
     return;
   }
+  //create an alert for minimum of 8 characters
   if(passlen <8){
     window.alert("Must be more than 8 characters!");
     return;
   }
+  //create an alert for maximum 128 characters
   if(passlen >128){
     window.alert("Must be less than 128 characters!");
     return;
@@ -46,6 +49,7 @@ upper;
   
   
 }
+//create function to generate random password
 function generatePassword(length){
 
   var newpassword = "";
